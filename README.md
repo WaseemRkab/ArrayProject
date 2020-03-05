@@ -18,7 +18,6 @@ Search Sum Angular Project
               max array length 200
             </li>
           </ul>
-
           <li class="list-group-item">
             Ability to get the numbers selected in a text based file, or stored in clipboard
           </li>
