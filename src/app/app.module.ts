@@ -3,13 +3,11 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {AlertComponent} from './alert/alert.component';
 import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    AlertComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
