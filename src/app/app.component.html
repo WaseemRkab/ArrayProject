@@ -1,0 +1,113 @@
+<app-alert (readAlert)="readInfo=false" *ngIf="readInfo"></app-alert>
+<h3 class="display-4 text-center">
+  <img
+    class="img-fluid" src="https://angular.io/assets/images/logos/angular/logo-nav@2x.png">
+</h3>
+<div class="container text-white">
+  <div class="row justify-content-center">
+    <div class="col text-center">
+      <svg fill="currentColor" height="32" viewBox="0 0 20 20" width="32"
+           xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd"
+              d="M6.646 3.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L12.293 10 6.646 4.354a.5.5 0 010-.708z"
+              fill-rule="evenodd"/>
+      </svg>
+      <div class="btn-group">
+        <button (click)="addNumber()" class="btn btn-primary" type="button">Add</button>
+        <div class="form-group m-1">
+        </div>
+        <button (click)="onReadInfo()" class="btn btn-light" type="button">Info</button>
+        <div class="form-group m-1">
+        </div>
+        <button (click)="clearForm()" class="btn btn-danger">Clear Form</button>
+        <div class="form-group m-1 text-danger">
+        </div>
+        <button (click)="clearArray()" class="btn btn-secondary">Clear Array</button>
+        <div class="form-group m-1 text-danger">
+        </div>
+        <button [disabled]="formData.invalid" class="btn btn-success" form="form" type="submit">Find Sum</button>
+      </div>
+      <svg fill="currentColor" height="32" viewBox="0 0 20 20" width="32"
+           xmlns="http://www.w3.org/2000/svg">
+        <path clip-rule="evenodd"
+              d="M13.354 3.646a.5.5 0 010 .708L7.707 10l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"
+              fill-rule="evenodd"></path>
+      </svg>
+      <div class="form-group">
+      </div>
+      <span *ngIf="calculating" class="lead">Calculating...</span>
+      <span *ngIf="noResult" class="lead">No Result found!</span>
+      <div *ngIf="calculated" class="btn-group">
+        <div *ngIf="copiedToClipboard" class="mr-1">
+          <svg class="bi bi-check-circle" fill="currentColor" height="32" viewBox="0 0 20 20" width="32"
+               xmlns="http://www.w3.org/2000/svg">
+            <path clip-rule="evenodd"
+                  d="M17.354 4.646a.5.5 0 010 .708l-7 7a.5.5 0 01-.708 0l-3-3a.5.5 0 11.708-.708L10 11.293l6.646-6.647a.5.5 0 01.708 0z"
+                  fill-rule="evenodd"></path>
+            <path clip-rule="evenodd"
+                  d="M10 4.5a5.5 5.5 0 105.5 5.5.5.5 0 011 0 6.5 6.5 0 11-3.25-5.63.5.5 0 11-.5.865A5.472 5.472 0 0010 4.5z"
+                  fill-rule="evenodd"></path>
+          </svg>
+        </div>
+        <button (click)="copyToClipboard()" class="btn btn-info" type="button">Copy to Clipboard</button>
+        <div class="form-group m-1 text-danger">
+        </div>
+        <button (click)="exportToFile()" class="btn btn-dark" type="button">Export to Text File</button>
+        <div class="form-group m-1 text-danger">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col">
+      <div [formGroup]="formData" class="form-group">
+        <label class="col-form-label" for="number">Sum Value to Search in Array:</label>
+        <input [placeholder]="onInvalidInput()? 'Required Integer':''" class="form-control" formControlName="sumVal"
+               id="number"
+               type="number">
+      </div>
+      <div [formGroup]="formData">
+        <label class="col-form-label" for="numCount">Numbers equal to Sum:</label>
+        <select class="form-control" formControlName="numsEqSum" id="numCount">
+          <option *ngFor="let num of numCount" [hidden]="num > list.length" [value]="num">{{num}}</option>
+        </select>
+      </div>
+      <div [formGroup]="formData">
+        <label class="col-form-label" for="arrayLen">Array Length:</label>
+        <input (keydown.enter)="onChangingArrayLength()" [placeholder]="onInvalidLen()?'Required Positive Integer':''"
+               class="form-control"
+               formControlName="arrayLen" id="arrayLen" type="number">
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col">
+      <label class="col-form-label">Your Array:</label>
+      <form (ngSubmit)="calculateArray()" [formGroup]="formData" id="form" name="form">
+        <div class="row" formArrayName="numbersArr">
+          <div *ngFor="let item of listIterator; let i=index">
+            <div class="col-auto">
+              <div class="btn-group form-group">
+                <input (paste)="fetchClipboard($event,i)" [formControlName]="i"
+                       [id]="i"
+                       [ngClass]="onCalculated(i)"
+                       [placeholder]="onInvalidItem(i)? 'Required Integer':''" class="form-control" type="number"
+                >
+                <svg (click)="onDeletingItem(i)" fill="currentColor" height="1em" style="cursor: pointer" width="1em"
+                     xmlns="http://www.w3.org/2000/svg">
+                  <path clip-rule="evenodd"
+                        d="M5.646 5.646a.5.5 0 000 .708l8 8a.5.5 0 00.708-.708l-8-8a.5.5 0 00-.708 0z"
+                        fill-rule="evenodd"></path>
+                  <path clip-rule="evenodd"
+                        d="M14.354 5.646a.5.5 0 010 .708l-8 8a.5.5 0 01-.708-.708l8-8a.5.5 0 01.708 0z"
+                        fill-rule="evenodd"></path>
+                </svg>
+              </div>
+            </div>
+            <div *ngIf="i%4===0" class="w-100"></div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

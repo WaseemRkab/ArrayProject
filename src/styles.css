@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  line-height: 24px;
+  line-height: 2.4rem;
+  flex: 1;
+  padding: 48px;
+  background-color: #1976d2;
+  font-weight: 300;
+  display: block;
+}
+
+body:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: url(https://angular.io/assets/images/logos/angular/angular_whiteTransparent_withMargin.png) top 0 left 0 repeat,
+  url(https://angular.io/assets/images/logos/angular/angular_whiteTransparent_withMargin.png) top 80px left 160px repeat;
+  opacity: .05;
+  background-size: 320px auto;
+}

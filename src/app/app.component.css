@@ -1,0 +1,8 @@
+.selected {
+  background-color: #495057;
+  color: white;
+}
+
+input.ng-invalid.ng-touched.ng-dirty {
+  border: 2px solid #dc3545;
+}
