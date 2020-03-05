@@ -1,27 +1,27 @@
 # ArrayProject
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.3.
+Search Sum Angular Project
 
-## Development server
+<p class="lead">Search Sum Angular Project</p>
+        <ul class="list-group">
+          <li class="list-group-item">
+            Finds 1 - 4 elements in the array that equals to Sum value and selects them
+          </li>
+          <li class="list-group-item">
+            Ability to paste array of numbers with format of [1,2,n.. | 1 2 n..]
+          </li>
+          <ul class="list-group-item">
+            <li class="list-group-item">
+              Can resize array length with an enter or add item button
+            </li>
+            <li class="list-group-item">
+              max array length 200
+            </li>
+          </ul>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+          <li class="list-group-item">
+            Ability to get the numbers selected in a text based file, or stored in clipboard
+          </li>
+        </ul>
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Angular 9 CLI Project version 9.0.3.
