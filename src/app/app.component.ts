@@ -1,9 +1,10 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {AbstractControl, FormArray, FormControl, FormGroup, Validators} from '@angular/forms';
 import {CalculateService} from './calculate.service';
 import {FormModel} from './form.model';
 import * as copy from 'copy-to-clipboard';
 import * as FileSaver from 'file-saver';
+import {SwalComponent} from '@sweetalert2/ngx-sweetalert2';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +12,14 @@ import * as FileSaver from 'file-saver';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  @ViewChild('dangerTpl') toastModal: ElementRef;
+  @ViewChild('clipBoardCopied') clipBoardCopied: SwalComponent;
+  @ViewChild('clipBoardNotCopied') clipBoardNotCopied: SwalComponent;
+  @ViewChild('infoModal') infoModal: SwalComponent;
+
   calculating: boolean;
   formData: FormGroup;
   noResult: boolean;
   calculated: boolean;
-  copiedToClipboard: boolean;
   calculatedNumbersIndex: number[];
   calculatedNumbers: number[];
   numCount: number[] = [
@@ -192,16 +195,18 @@ export class AppComponent implements OnInit {
   }
 
   onReadInfo() {
-    this.readInfo = true;
+    this.infoModal.fire();
   }
 
   copyToClipboard() {
     const copyText = this.calculatedNumbers.join(' ');
     const copied = copy(copyText);
+    const thisContext = this;
     if (copied) {
-      const thisContext = this;
-      setTimeout(() => thisContext.showToastMessage(), 500);
+      setTimeout(() => thisContext.showClipBoardCopiedMessage(), 600);
+      return;
     }
+    setTimeout(() => thisContext.showClipBoardNotCopiedMessage(), 1000);
   }
 
   exportToFile() {
@@ -212,13 +217,11 @@ export class AppComponent implements OnInit {
     FileSaver.saveAs(blobFile, 'numbers');
   }
 
-  private showToastMessage() {
-    this.copiedToClipboard = true;
-    const thisContext = this;
-    setTimeout(() => thisContext.hideToastMessage(), 2000);
+  private showClipBoardCopiedMessage() {
+    this.clipBoardCopied.fire();
   }
 
-  private hideToastMessage() {
-    this.copiedToClipboard = false;
+  private showClipBoardNotCopiedMessage() {
+    this.clipBoardNotCopied.fire();
   }
 }
