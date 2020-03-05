@@ -1,6 +1,6 @@
 # ArrayProject
 
-Search Sum Angular Project
+Web Application Angular 9 Project.
 
 <p class="lead">Search Sum Angular Project</p>
         <ul class="list-group">
@@ -23,4 +23,3 @@ Search Sum Angular Project
           </li>
         </ul>
 
-Angular 9 CLI Project version 9.0.3.
