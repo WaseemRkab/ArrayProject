@@ -2,8 +2,11 @@
 
 Web Application Angular 9 Project.
 
-<p class="lead">Search Sum Brute Force Angular Project</p>
+<p class="lead">Search Sum  Angular Project</p>
         <ul class="list-group">
+          <li class="list-group-item">
+            Brute-force search Algorithm
+          </li>
           <li class="list-group-item">
             Finds 1 - 4 elements in the array that equals to Sum value and selects them
           </li>
