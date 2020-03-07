@@ -5,7 +5,7 @@ Web Application Angular 9 Project.
 <p class="lead">Sum Search Brute-Force Algorithm</p>
         <ul class="list-group">
       <li class="list-group-item">
-        Finds 1 - 4 elements in the array that equals to Sum value and selects them
+        Finds 1 - 9 elements in the array that equals to Sum value and selects them
       </li>
       <li class="list-group-item">
         Ability to paste array of numbers with format: [1,2,n.. | 1 2 n..]

@@ -23,10 +23,9 @@ export class AppComponent implements OnInit {
   calculatedNumbersIndex: number[];
   calculatedNumbers: number[];
   numCount: number[] = [
-    1, 2, 3, 4
+    1, 2, 3, 4, 5, 6, 7, 8, 9
   ];
   submitted: boolean;
-  readInfo: boolean;
 
   constructor(private calculateService: CalculateService) {
   }
