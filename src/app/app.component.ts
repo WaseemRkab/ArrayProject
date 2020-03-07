@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
       arrayLen: new FormControl(1, [
         Validators.required,
         Validators.min(1),
-        Validators.max(200)
+        Validators.max(100)
       ])
     });
   }
@@ -73,7 +73,7 @@ export class AppComponent implements OnInit {
 
   addNumber() {
     const list = this.list;
-    if (this.list.length < 200) {
+    if (this.list.length < 100) {
       this.lenInput.setValue(this.list.length + 1);
       list.push(new FormControl(null,
         [
@@ -216,23 +216,12 @@ export class AppComponent implements OnInit {
     FileSaver.saveAs(blobFile, 'numbers');
   }
 
-  private showClipBoardCopiedMessage() {
-    this.clipBoardCopied.fire();
+
+  private async showClipBoardCopiedMessage() {
+    await this.clipBoardCopied.fire();
   }
 
-  private showClipBoardNotCopiedMessage() {
-    this.clipBoardNotCopied.fire();
+  private async showClipBoardNotCopiedMessage() {
+    await this.clipBoardNotCopied.fire();
   }
-}
-
-if (typeof Worker !== 'undefined') {
-  // Create a new
-  const worker = new Worker('./app.worker', {type: 'module'});
-  worker.onmessage = ({data}) => {
-    console.log(`page got message: ${data}`);
-  };
-  worker.postMessage('hello');
-} else {
-  // Web Workers are not supported in this environment.
-  // You should add a fallback so that your program still executes correctly.
 }

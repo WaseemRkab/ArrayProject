@@ -13,7 +13,7 @@ import {SweetAlert2Module} from '@sweetalert2/ngx-sweetalert2';
     BrowserModule,
     ReactiveFormsModule,
     FormsModule,
-    SweetAlert2Module.forRoot()
+    SweetAlert2Module.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

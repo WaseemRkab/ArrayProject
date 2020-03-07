@@ -17,7 +17,7 @@
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
-            "tsConfig": "",
+            "tsConfig": "tsconfig.json",
             "aot": true,
             "assets": [
               "src/favicon.ico",
@@ -81,7 +81,7 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              ""
+              "tsconfig.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -91,5 +91,8 @@
       }
     }
   },
-  "defaultProject": "ArrayProject"
+  "defaultProject": "ArrayProject",
+  "cli": {
+    "analytics": "9cd02920-ed95-400f-94ef-554fc191f765"
+  }
 }

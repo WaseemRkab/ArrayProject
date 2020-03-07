@@ -336,21 +336,6 @@ export class CalculateService {
       const sortArrIndex = this.sortedNumberWithIndexes(formModel.numbersArr);
       const methodName = `on${formModel.numsEqSum}numsEq`;
       numbersRes = this.calculateHandler[methodName](sortArrIndex.indexes, sortArrIndex.numbers, formModel);
-
-      /*if (typeof Worker !== 'undefined') {
-        // Create a new
-        const worker = new Worker('./app.worker', {type: 'module'});
-        worker.onmessage = ({data}) => {
-          console.log(`page got message: ${data}`);
-        };
-        worker.postMessage('hello');
-      } else {
-        console.log('not supported');
-        // Web workers are not supported in this environment.
-        // You should add a fallback so that your program still executes correctly.
-      }*/
-
-
       if (numbersRes) {
         resolve(numbersRes);
         return;
@@ -375,16 +360,4 @@ export class CalculateService {
     }
     return {numbers: arrayNumbers, indexes: indexesNum};
   }
-}
-
-if (typeof Worker !== 'undefined') {
-  // Create a new
-  const worker = new Worker('./calc.worker', {type: 'module'});
-  worker.onmessage = ({data}) => {
-    console.log(`page got message: ${data}`);
-  };
-  worker.postMessage('hello');
-} else {
-  // Web Workers are not supported in this environment.
-  // You should add a fallback so that your program still executes correctly.
 }

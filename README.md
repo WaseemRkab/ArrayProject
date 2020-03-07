@@ -15,7 +15,7 @@ Web Application Angular 9 Project.
           Can resize array length with an enter or add item button
         </li>
         <li class="list-group-item">
-          Max array length 200
+          Max array length 100
         </li>
       </ul>
       <li class="list-group-item">
